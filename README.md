@@ -50,14 +50,14 @@ GameBuddy has a lot of potential for further enhancements and features. Here are
 
 Inspiration, code snippets, etc.
 
-- [nGBA](https://mgba.io)
+- [mGBA](https://mgba.io)
+
+- [Emscripten](https://emscripten.org/index.html)
+
+- [PKHex](https://github.com/kwsch/PKHeX)
 
 - [Generation 1 Games](https://archive.org/download/nointro.gb)
 
 - [Generation 2 Games](https://archive.org/download/nointro.gbc)
 
 - [Generation 3 Games](https://archive.org/download/nointro.gba)
-
-- [Emscripten](https://emscripten.org/index.html)
-
-- [PKHex](https://github.com/kwsch/PKHeX)
