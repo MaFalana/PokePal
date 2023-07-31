@@ -1,8 +1,6 @@
 from flask import Flask, jsonify, request, g, session, redirect, url_for
 from flask_cors import CORS, cross_origin
 import requests
-from dotenv import load_dotenv
-load_dotenv()
 
 import os
 
