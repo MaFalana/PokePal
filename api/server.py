@@ -6,16 +6,50 @@ import os
 
 from cryptography.hazmat.primitives import serialization
 
+from db import DatabaseManager
+
+
+db = DatabaseManager("PokePal") # Create a DatabaseManager instance with your desired database name
+
 app = Flask(__name__) # Initialize the Flask application
 CORS(app) # and enable CORS
 
+@app.route('/Login', methods=['GET']) # Logins user
+@cross_origin()
+def getUser():
+    session.clear() # Clear the session if it exists
 
+    query = { 'Username': request.form['username'] }
+
+    user = db.query("Users", query)
+
+    session['user'] = user
+
+    data = {
+        'Message': f'Successfully logged in as {user["Username"]}',
+        'User': session['user']
+    }
+
+    return jsonify(data)
+
+@app.route('/Register', methods=['POST']) # Register a new user
+@cross_origin()
+def postUser():
+
+    newUser = {
+        'Username': request.form['username'],
+        'Password': request.form['password'],
+        'Email': request.form['email']
+    }
+
+    db.insert("Users", newUser)
+
+    return jsonify({'Message': 'Connected to Register Endpoint'})
 
 @app.route('/Save', methods=['GET']) # Gets save file so user can export
 @cross_origin()
 def getSave():
     return jsonify({'Message': 'Connected to Save Endpoint'})
-
 
 @app.route('/Save', methods=['POST']) # Gets save file so user can import
 @cross_origin()

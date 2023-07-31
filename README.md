@@ -50,6 +50,8 @@ GameBuddy has a lot of potential for further enhancements and features. Here are
 
 Inspiration, code snippets, etc.
 
+- [MongoDB]()
+
 - [mGBA](https://mgba.io)
 
 - [Emscripten](https://emscripten.org/index.html)
