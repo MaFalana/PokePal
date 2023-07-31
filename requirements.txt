@@ -1,0 +1,5 @@
+Flask==2.0.1
+Flask-Cors==3.0.10
+requests==2.26.0
+cryptography==3.4.8
+PyJWT==2.3.0

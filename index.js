@@ -55,7 +55,9 @@ $(document).ready(function()
 
     function fetchGames(Gen) 
     {
-        const url = `http://127.0.0.1:5000/Gen/${Gen}`; // Url to test on local server
+        //const url = `http://127.0.0.1:5000/Gen/${Gen}`; // Url to test on local server
+
+        const url = `https://pokepal.vercel.app/Gen/${Gen}`; // Url to test on vercel server
 
         console.log(`URL: ${url}`);
 

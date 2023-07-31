@@ -1,14 +1,10 @@
 from flask import Flask, jsonify, request, g, session, redirect, url_for
 from flask_cors import CORS, cross_origin
 import requests
-import base64 #Used to encode the client ID and client secret in the proper format for the authorization header. (Spotify)
-from urllib.parse import urlencode
 from dotenv import load_dotenv
 load_dotenv()
 
 import os
-
-import jwt, datetime, calendar, time
 
 from cryptography.hazmat.primitives import serialization
 
