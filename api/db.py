@@ -7,15 +7,16 @@ import os
 from dotenv import load_dotenv
 
 
-username = os.getenv("MONGO_USER")
+user = os.getenv("MONGO_USER")
 
-password = os.getenv("MONGO_PASS")
+pwd = os.getenv("MONGO_PASS")
 
 host = os.getenv("MONGO_HOST")
 
+connection = f"mongodb://{user}:{pwd}@{host}/"
 class DatabaseManager:
     def __init__(self, db_name):
-        self.client = MongoClient(f'mongodb://{username}:{password}localhost:27017/')
+        self.client = MongoClient(connection)
         self.db = self.client[db_name]
 
     def query(self, collection_name, query):
@@ -28,5 +29,3 @@ class DatabaseManager:
         #result = collection.insert_one(document)
         #return result.inserted_id
 
-    def __del__(self):
-        self.client.close()

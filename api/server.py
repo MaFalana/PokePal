@@ -19,9 +19,11 @@ CORS(app) # and enable CORS
 def getUser():
     session.clear() # Clear the session if it exists
 
-    query = { 'Username': request.form['username'] }
+    query = { 'Username': request.form['email'] }
 
     user = db.query("Users", query)
+
+    print(f'User: {user}')
 
     session['user'] = user
 
@@ -37,10 +39,14 @@ def getUser():
 def postUser():
 
     newUser = {
-        'Username': request.form['username'],
+        'Username': request.form['firstName'],
         'Password': request.form['password'],
-        'Email': request.form['email']
+        'Email': request.form['email'],
+        'Saves': [],
+        'Cheats': []
     }
+
+    print(f'New User: {newUser}')
 
     db.insert("Users", newUser)
 
