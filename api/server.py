@@ -17,15 +17,15 @@ CORS(app) # and enable CORS
 @app.route('/Login', methods=['GET']) # Logins user
 @cross_origin()
 def getUser():
-    session.clear() # Clear the session if it exists
-
     query = { 'Username': request.form['email'] }
 
-    user = db.query("Users", query)
+    users = db.query("Users", query)
 
-    print(f'User: {user}')
+    for user in users:
+        if(user['Password'] == request.form['password']):
+            session['user'] = user
 
-    session['user'] = user
+    print(f'User: {session["user"]}')
 
     data = {
         'Message': f'Successfully logged in as {user["Username"]}',
@@ -37,7 +37,6 @@ def getUser():
 @app.route('/Register', methods=['POST']) # Register a new user
 @cross_origin()
 def postUser():
-
     newUser = {
         'Username': request.form['firstName'],
         'Password': request.form['password'],
@@ -45,8 +44,6 @@ def postUser():
         'Saves': [],
         'Cheats': []
     }
-
-    print(f'New User: {newUser}')
 
     db.insert("Users", newUser)
 
@@ -60,6 +57,15 @@ def getSave():
 @app.route('/Save', methods=['POST']) # Gets save file so user can import
 @cross_origin()
 def postSave():
+    newSave = {
+        'Game': request.form['firstName'],
+        'File': request.form['password'],
+        'Date': ''
+    }
+
+    
+
+    db.insert("Saves", newSave)
     return jsonify({'Message': 'Connected to Save POST Endpoint'})
 
 
